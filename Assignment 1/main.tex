@@ -1,0 +1,35 @@
+\documentclass[twocolumn]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{Assignment 1 - Prob 2.7}
+\author{Jatin Tarachandani (CS20BTECH11021)}
+\date{March 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem Statement}
+A factory has 2 machines A and B. Past record shows that machine A has produced 60\% of the items of output and machine B produced 40\% of the items of output. Further, 2\% of the items produced by machine A and 1\% of the items produced by machine B were defective. All the items are put into one stockpile and one is selected from them and is found to be defective. What is the probability that it was produced by machine B? 
+\section{Solution}
+Let $H \in \{0,1\}$ be the random variable denoting which machine the item was produced by, with $H=0$ representing the item being from machine A. Let $H \in \{0,1\}$ be the random variable denoting whether the product is defective or not, with $M=0$ representing that the item is not defective. 
+
+We are given that:
+\begin{align*}
+Pr(H=0)&=0.6\\
+Pr(M=1|H=0)&=0.02\\
+Pr(M=1|H=1)&=0.01\\
+\end{align*}
+Therefore, by Bayes Theorem, we say that:
+\begin{align*}
+Pr(H=1|M=1)&=\frac{Pr(M=1|H=1)\cdot Pr(H=1)}{\sum_{i=0}^{1} Pr(M=1|H=i)\cdot Pr(H=i)}\\
+%&=\frac{Pr(M=1|H=1)\cdot Pr(H=1)}{Pr(M=1|H=1)\cdot Pr(H=1)+Pr(M=1|H=0)\cdot Pr(H=0)}\\
+&=\frac{0.01\cdot 0.4}{0.01\cdot 0.4 + 0.02\cdot 0.6}\\
+&=\frac{4}{16}\\
+&=0.25
+\end{align*}
+The probability that a defective part taken from the stockpile of all parts produced by machines A and B was produced by machine B, is 0.25.
+
+\end{document}
