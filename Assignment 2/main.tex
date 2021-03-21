@@ -1,0 +1,39 @@
+\documentclass[twocolumn]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+\title{Assignment 2 - GATE problem 49}
+\author{Jatin Tarachandani-CS20BTECH11021}
+\date{March 2021}
+
+\begin{document}
+\maketitle
+\section{Problem Statement}
+A fair coin is tossed 3 times in succession. If the first toss is a head, then the probability of getting exactly two heads in three tosses is?
+\section{Solution}
+Let $K \in \{0, 1, 2, 3\}$ be the random variable denoting the possible numbers of heads we obtain in three consecutive tosses of the coin. Let $L \in \{0, 1\}$ be the random variable denoting the result of the first flip, with 0 representing a result of tails.
+We see that K represents the probabilities of getting a certain number of successes in 3 distinct Bernoulli trials, so we can find the probabilities for K to take its possible values via a binomial distribution b(n, p).
+We know that for a binomial distribution, $Pr(K=r)=\binom{n}{r}p^r (1-p)^{n-r}$. Here, $n=3, p=0.5$.
+\begin{align}
+    Pr(K=0)&=\binom{3}{0}0.5^0 0.5^{3-0}=0.125\\
+    Pr(K=1)&=\binom{3}{1}0.5^1 0.5^{3-1}=0.375\\
+    Pr(K=2)&=\binom{3}{2}0.5^2 0.5^{3-2}=0.375\\
+    Pr(K=3)&=\binom{3}{3}0.5^3 0.5^{3-3}=0.125\\
+    Pr(L=1|K=0)&=0\\
+    Pr(L=1|K=1)&=\dfrac{1}{3} \equiv 0.33\\
+    Pr(L=1|K=2)&=\dfrac{2}{3} \equiv 0.67\\
+    Pr(L=1|K=3)&=1
+\end{align}
+Using Bayes theorem, we get:
+\begin{align*}
+    Pr(K=2|L=1)&=\frac{Pr(L=1|K=2)\cdot Pr(K=2)}{\sum_{i=0}^{3} Pr(L=1|K=i)\cdot Pr(K=i)}\\
+    %&=\frac{\pr(L=1|K=2)\cdot \pr(K=2)}{\splitfrac{\pr(L=1|K=0)\cdot\pr(K=0)+\pr(L=1|K=1)\cdot \pr(K=1)}{+\pr(L=1|K=2)\cdot \pr(K=2)+\pr(L=1|K=3)\cdot \pr(K=3)}}\\
+    &=\frac{0.67\cdot 0.375}{\splitfrac{0\cdot0.125+0.33\cdot 0.375}{+0.67\cdot 0.375+1\cdot 0.125}}\\
+    &=\frac{0.25}{0.5}\\
+    &=0.5.
+\end{align*}
+
+The probability of getting exactly 2 heads in 3 tosses, if the first toss is a head, is 0.5.
+\end{document}
