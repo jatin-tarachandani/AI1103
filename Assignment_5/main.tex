@@ -1,0 +1,166 @@
+\documentclass[twocolumn]{article}
+
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+\usepackage[cmex10]{amsmath}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+
+\usepackage{longtable}
+\usepackage{multirow}
+
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{steinmetz}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{graphicx}
+\usepackage{tkz-euclide}
+
+\usetikzlibrary{calc,math}
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+    \usepackage{lscape}     
+\usepackage{multicol}
+\usepackage{chngcntr}
+
+\DeclareMathOperator*{\Res}{Res}
+
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\vert#1\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\lVert#1\rVert}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E[ #1 ]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\numberwithin{equation}{subsection}
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+\renewcommand{\thefigure}{\theproblem}
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+
+\title{Assignment 5}
+\author{Jatin Tarachandani-CS20BTECH11021}
+\date{April 2021}
+\begin{document}
+\maketitle
+Download latex codes from 
+%
+\begin{lstlisting}
+https://github.com/jatin-tarachandani/AI1103/blob/main/Assignment_5/main.tex
+\end{lstlisting}
+\section{Problem Statement}
+Let $X$, $Y$, have the joint discrete distribution such that $X|Y=y \sim$ Binomial($y$, 0.5) and $Y\sim$ Poisson($\lambda$), $\lambda>0$, where $\lambda$ is an unknown parameter. Let $T=T(X, Y)$ be any unbiased estimator of $\lambda$. Then
+\begin{enumerate}
+    \item  $Var(T) \leq Var(Y)  \text{ for all } \lambda$
+    \item $Var(T) \geq Var(Y) \text{ for all } \lambda$
+    \item $Var(T) \geq \lambda \text{ for all } \lambda$
+    \item $Var(T) = Var(Y) \text{ for all } \lambda$
+\end{enumerate}
+
+\section{Solution}
+An unbiased estimator is an estimator on a sample of data whose expected value is exactly equal to the parameter being estimated.
+
+We know that:
+\begin{align}
+Var(Y)=\lambda
+\end{align}
+
+as Y has a Poisson distribution.
+
+From Bayes Theorem,
+\begin{align}
+    Pr\brak{X=x,Y=y}&=Pr\brak{Y=y}\cdot Pr\brak{X=x|Y=y}\\
+    &=\frac{\lambda^y}{y!} e^{- \lambda}\cdot \binom{y}{x} \frac{1}{2^y}
+\end{align}
+Let us represent $ Pr\brak{X=x,Y=y}$ as a function of $x, y$, and $\lambda$: $f(x, y;\lambda)$.
+
+$T(X, Y)$ is an unbiased estimator of $\lambda$.
+From Cramer-Rao bound,
+\begin{align}
+    Var(T(X, Y))&\geq \frac{-1}{E(\frac{\partial^2 ln(f(x,y;\lambda))}{\partial\lambda^2})}\\
+    &\geq\frac{-1}{E\brak{\frac{-y}{\lambda^2}}}\\
+    &\geq\frac{\lambda^2}{E\brak{Y}}\\
+    &\geq \lambda
+\end{align}
+This is because the expectation value of a Poisson distribution with parameter $\lambda$ is $\lambda$ itself.
+
+The correct options are options (2) and (3).
+
+
+
+\end{document}
