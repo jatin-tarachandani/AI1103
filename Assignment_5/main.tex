@@ -133,7 +133,14 @@ Let $X$, $Y$, have the joint discrete distribution such that $X|Y=y \sim$ Binomi
 \end{enumerate}
 
 \section{Solution}
-An unbiased estimator is an estimator on a sample of data whose expected value is exactly equal to the parameter being estimated.
+If an estimator of a certain parameter of a sample of data has the expected value exactly equal to the parameter it estimates, then it is said to be an unbiased estimator. 
+
+Suppose we had an estimator $T(X_1, X_2, X_3...X_n)$ acting on a set of n RVs $X_1, X_1, X_2, X_3...X_n$ which estimates a parameter $\theta$, then if
+\begin{equation}
+    E\brak{T(X_1, X_2, X_3...X_n)}=\theta
+\end{equation}
+
+the estimator is unbiased. 
 
 We know that:
 \begin{align}
