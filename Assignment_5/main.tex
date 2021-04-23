@@ -135,15 +135,15 @@ Let $X$, $Y$, have the joint discrete distribution such that $X|Y=y \sim$ Binomi
 \section{Solution}
 If an estimator of a certain parameter of a sample of data has the expected value exactly equal to the parameter it estimates, then it is said to be an unbiased estimator. 
 
-Suppose we had an estimator $T(X_1, X_2, X_3...X_n)$ acting on a set of n RVs $X_1, X_1, X_2, X_3...X_n$ which estimates a parameter $\theta$, then if
+Suppose we have an estimator $T(X, Y)$, acting on a set of 2 RVs $X, Y$; which estimates a parameter $\theta$, then if
 \begin{equation}
-    E\brak{T(X_1, X_2, X_3...X_n)}=\theta
+    E\brak{T(X, Y)}=\theta
 \end{equation}
 
 the estimator is unbiased. 
 
 We know that:
-\begin{align}
+\begin{align}\label{Var=lam}
 Var(Y)=\lambda
 \end{align}
 
@@ -157,17 +157,22 @@ From Bayes Theorem,
 Let us represent $ Pr\brak{X=x,Y=y}$ as a function of $x, y$, and $\lambda$: $f(x, y;\lambda)$.
 
 $T(X, Y)$ is an unbiased estimator of $\lambda$.
-From Cramer-Rao bound,
+The Cramer-Rao bound for an unbiased estimator T of a parameter $\lambda$ states that:
+\begin{align}
+    Var\brak{T\brak{X,Y}}\geq \frac{-1}{E(\frac{\partial^2 ln(f(x,y;\lambda))}{\partial\lambda^2})}
+\end{align}
+From the above definition of Cramer-Rao bound,
 \begin{align}
     Var(T(X, Y))&\geq \frac{-1}{E(\frac{\partial^2 ln(f(x,y;\lambda))}{\partial\lambda^2})}\\
     &\geq\frac{-1}{E\brak{\frac{-y}{\lambda^2}}}\\
-    &\geq\frac{\lambda^2}{E\brak{Y}}\\
+    &\geq\frac{\lambda^2}{E\brak{y}}\\
     &\geq \lambda
 \end{align}
 This is because the expectation value of a Poisson distribution with parameter $\lambda$ is $\lambda$ itself.
 
-The correct options are options (2) and (3).
+The correct options are options (2) and (3), since by the application of Cramer-Rao bound, we see that the variance of $T$ is $\geq \lambda=Var(Y)$ from \eqref{Var=lam}. Hence, (1) and (4) are incorrect as they would only be true in the case where Var(T) $= \lambda$ for some specific lambda.  
 
 
 
 \end{document}
+
