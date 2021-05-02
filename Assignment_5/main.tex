@@ -67,6 +67,7 @@ columns=fullflexible
 \newcommand{\BEQA}{\begin{eqnarray}}
 \newcommand{\EEQA}{\end{eqnarray}}
 \newcommand{\define}{\stackrel{\triangle}{=}}
+\newcommand{\comb}[2]{{}^{#1}\mathrm{C}_{#2}}
 \bibliographystyle{IEEEtran}
 \raggedbottom
 \setlength{\parindent}{0pt}
@@ -133,7 +134,6 @@ Let $X$, $Y$, have the joint discrete distribution such that $X|Y=y \sim$ Binomi
 \end{enumerate}
 
 \section{Solution}
-If an estimator of a certain parameter of a sample of data has the expected value exactly equal to the parameter it estimates, then it is said to be an unbiased estimator. 
 
 Suppose we have an estimator $T(X, Y)$, acting on a set of 2 RVs $X, Y$; which estimates a parameter $\theta$, then if
 \begin{equation}
@@ -151,26 +151,25 @@ as Y has a Poisson distribution.
 
 From Bayes Theorem,
 \begin{align}
-    Pr\brak{X=x,Y=y}&=Pr\brak{Y=y}\cdot Pr\brak{X=x|Y=y}\\
-    &=\frac{\lambda^y}{y!} e^{- \lambda}\cdot \binom{y}{x} \frac{1}{2^y}
+    Pr\brak{X=x,Y=y}&=Pr\brak{Y=y}  Pr\brak{X=x|Y=y}\\
+    &= \comb{y}{x} \frac{1}{2^y} \frac{\lambda^y}{y!} e^{- \lambda}
 \end{align}
 Let us represent $ Pr\brak{X=x,Y=y}$ as a function of $x, y$, and $\lambda$: $f(x, y;\lambda)$.
 
-$T(X, Y)$ is an unbiased estimator of $\lambda$.
-The Cramer-Rao bound for an unbiased estimator T of a parameter $\lambda$ states that:
+If $T(X, Y)$ is an unbiased estimator of a parameter $\lambda$, the Cramer-Rao bound states that:
 \begin{align}
-    Var\brak{T\brak{X,Y}}\geq \frac{-1}{E(\frac{\partial^2 ln(f(x,y;\lambda))}{\partial\lambda^2})}
+    Var\brak{T\brak{X,Y}}\geq \frac{-1}{E\brak{\frac{\partial^2 ln(f(x,y;\lambda))}{\partial\lambda^2}}}
 \end{align}
 From the above definition of Cramer-Rao bound,
 \begin{align}
-    Var(T(X, Y))&\geq \frac{-1}{E(\frac{\partial^2 ln(f(x,y;\lambda))}{\partial\lambda^2})}\\
+    Var(T(X, Y))&\geq \frac{-1}{E\brak{\frac{\partial^21 ln(f(x,y;\lambda))}{\partial\lambda^2}}}\\
     &\geq\frac{-1}{E\brak{\frac{-y}{\lambda^2}}}\\
     &\geq\frac{\lambda^2}{E\brak{y}}\\
-    &\geq \lambda
+    &\geq \lambda \label{CramerRao}
 \end{align}
-This is because the expectation value of a Poisson distribution with parameter $\lambda$ is $\lambda$ itself.
+because the expectation value of a Poisson distribution with parameter $\lambda$ is $\lambda$.
 
-The correct options are options (2) and (3), since by the application of Cramer-Rao bound, we see that the variance of $T$ is $\geq \lambda=Var(Y)$ from \eqref{Var=lam}. Hence, (1) and (4) are incorrect as they would only be true in the case where Var(T) $= \lambda$ for some specific lambda.  
+The correct options are options (2) and (3), since by \eqref{CramerRao}, we see that the variance of $T$ is $\geq \lambda=Var(Y)$ (from \eqref{Var=lam}). (1) and (4) do not hold for all $\lambda$.
 
 
 
