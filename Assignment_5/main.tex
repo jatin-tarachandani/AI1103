@@ -85,6 +85,13 @@ columns=fullflexible
 \providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
 \theoremstyle{remark}
 \newtheorem{rem}{Remark}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
 \newcommand{\sgn}{\mathop{\mathrm{sgn}}}
 \providecommand{\abs}[1]{\vert#1\vert}
 \providecommand{\res}[1]{\Res\displaylimits_{#1}} 
@@ -116,7 +123,7 @@ columns=fullflexible
 
 \title{Assignment 5}
 \author{Jatin Tarachandani-CS20BTECH11021}
-\date{April 2021}
+\date{May 2021}
 \begin{document}
 \maketitle
 Download latex codes from 
@@ -134,20 +141,21 @@ Let $X$, $Y$, have the joint discrete distribution such that $X|Y=y \sim$ Binomi
 \end{enumerate}
 
 \section{Solution}
-
+\begin{definition}
 Suppose we have an estimator $T(X, Y)$, acting on a set of 2 RVs $X, Y$; which estimates a parameter $\theta$, then if
 \begin{equation}
     E\brak{T(X, Y)}=\theta
 \end{equation}
 
 the estimator is unbiased. 
+\end{definition}
 
-We know that:
+\begin{lemma}
+Since Y has a Poisson distribution, we know that:
 \begin{align}\label{Var=lam}
 Var(Y)=\lambda
 \end{align}
-
-as Y has a Poisson distribution.
+\end{lemma}
 
 From Bayes Theorem,
 \begin{align}
@@ -156,13 +164,16 @@ From Bayes Theorem,
 \end{align}
 Let us represent $ Pr\brak{X=x,Y=y}$ as a function of $x, y$, and $\lambda$: $f(x, y;\lambda)$.
 
+\begin{definition}
 If $T(X, Y)$ is an unbiased estimator of a parameter $\lambda$, the Cramer-Rao bound states that:
 \begin{align}
     Var\brak{T\brak{X,Y}}\geq \frac{-1}{E\brak{\frac{\partial^2 ln(f(x,y;\lambda))}{\partial\lambda^2}}}
 \end{align}
-From the above definition of Cramer-Rao bound,
+\end{definition}
+
+From applying Definition 2.2 on $T(X,Y)$,
 \begin{align}
-    Var(T(X, Y))&\geq \frac{-1}{E\brak{\frac{\partial^21 ln(f(x,y;\lambda))}{\partial\lambda^2}}}\\
+    Var(T(X, Y))&\geq \frac{-1}{E\brak{\frac{\partial^2 ln(f(x,y;\lambda))}{\partial\lambda^2}}}\\
     &\geq\frac{-1}{E\brak{\frac{-y}{\lambda^2}}}\\
     &\geq\frac{\lambda^2}{E\brak{y}}\\
     &\geq \lambda \label{CramerRao}
