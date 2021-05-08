@@ -159,22 +159,22 @@ Var(Y)=\lambda
 
 From Bayes Theorem,
 \begin{align}
-    Pr\brak{X=x,Y=y}&=Pr\brak{Y=y}  Pr\brak{X=x|Y=y}\\
+    \pr{X=x,Y=y}&=\pr{Y=y}  \pr{X=x|Y=y}\\
     &= \comb{y}{x} \frac{1}{2^y} \frac{\lambda^y}{y!} e^{- \lambda}
 \end{align}
-Let us represent $ Pr\brak{X=x,Y=y}$ as a function of $x, y$, and $\lambda$: $f(x, y;\lambda)$.
+Let us represent $ \pr{X=x,Y=y}$ as a function of $x, y$, and $\lambda$: $f(x, y;\lambda)$.
 
 \begin{definition}
 If $T(X, Y)$ is an unbiased estimator of a parameter $\lambda$, the Cramer-Rao bound states that:
 \begin{align}
-    Var\brak{T\brak{X,Y}}\geq \frac{-1}{E\brak{\frac{\partial^2 ln(f(x,y;\lambda))}{\partial\lambda^2}}}
+    Var\brak{T\brak{X,Y}}\geq -\frac{1}{E\brak{\frac{\partial^2 \ln(f(x,y;\lambda))}{\partial\lambda^2}}}
 \end{align}
 \end{definition}
 
 From applying Definition 2.2 on $T(X,Y)$,
 \begin{align}
-    Var(T(X, Y))&\geq \frac{-1}{E\brak{\frac{\partial^2 ln(f(x,y;\lambda))}{\partial\lambda^2}}}\\
-    &\geq\frac{-1}{E\brak{\frac{-y}{\lambda^2}}}\\
+    Var(T(X, Y))&\geq -\frac{1}{E\brak{\frac{\partial^2 \ln(f(x,y;\lambda))}{\partial\lambda^2}}}\\
+    &\geq-\frac{1}{E\brak{-\frac{y}{\lambda^2}}}\\
     &\geq\frac{\lambda^2}{E\brak{y}}\\
     &\geq \lambda \label{CramerRao}
 \end{align}
