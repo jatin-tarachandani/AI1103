@@ -164,14 +164,14 @@ From Bayes Theorem,
 \end{align}
 Let us represent $ \pr{X=x,Y=y}$ as a function of $x, y$, and $\lambda$: $f(x, y;\lambda)$.
 
-\begin{definition}
+\begin{definition} \label{def CRB}
 If $T(X, Y)$ is an unbiased estimator of a parameter $\lambda$, the Cramer-Rao bound states that:
 \begin{align}
     Var\brak{T\brak{X,Y}}\geq -\frac{1}{E\brak{\frac{\partial^2 \ln(f(x,y;\lambda))}{\partial\lambda^2}}}
 \end{align}
 \end{definition}
 
-From applying Definition 2.2 on $T(X,Y)$,
+From applying $\ref{def CRB}$ on $T(X,Y)$,
 \begin{align}
     Var(T(X, Y))&\geq -\frac{1}{E\brak{\frac{\partial^2 \ln(f(x,y;\lambda))}{\partial\lambda^2}}}\\
     &\geq-\frac{1}{E\brak{-\frac{y}{\lambda^2}}}\\
