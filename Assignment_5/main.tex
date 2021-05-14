@@ -4,7 +4,7 @@
 \usepackage{gensymb}
 \singlespacing
 \usepackage[cmex10]{amsmath}
-
+\usepackage[margin=1.25in]{geometry}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -162,18 +162,19 @@ From Bayes Theorem,
     \pr{X=x,Y=y}&=\pr{Y=y}  \pr{X=x|Y=y}\\
     &= \comb{y}{x} \frac{1}{2^y} \frac{\lambda^y}{y!} e^{- \lambda}
 \end{align}
-Let us represent $ \pr{X=x,Y=y}$ as a function of $x, y$, and $\lambda$: $f(x, y;\lambda)$.
+Let us represent $ \pr{X=x,Y=y}$ as the pmf of $x, y$, depending on $\lambda$: $p_{XY}\brak{x, y}$.
 
 \begin{definition} 
 If $T(X, Y)$ is an unbiased estimator of a parameter $\lambda$, the Cramer-Rao bound states that:
 \begin{align}
-    Var\brak{T\brak{X,Y}}\geq -\frac{1}{E\brak{\frac{\partial^2 \ln(f(x,y;\lambda))}{\partial\lambda^2}}} \label{def CRB}
+    Var\brak{T\brak{X,Y}}\geq -\frac{1}{E\brak{\frac{\partial^2 \ln(p_{XY}\brak{x, y}))}{\partial\lambda^2}}} \label{def CRB}
 \end{align}
 \end{definition}
 
 From using $\eqref{def CRB}$ on $T(X,Y)$,
 \begin{align}
-    Var(T(X, Y))&\geq -\frac{1}{E\brak{\frac{\partial^2 \ln(f(x,y;\lambda))}{\partial\lambda^2}}}\\
+    Var(T(X, Y))&\geq -\frac{1}{E\brak{\frac{\partial^2 \ln(p_{XY}\brak{x, y}))}{\partial\lambda^2}}}\\
+    &\geq-\frac{1}{E\brak{\frac{\partial^2\brak{ \ln{\comb{y}{x}}-y\ln{2^y}+y\ln{\lambda}-\ln{y!}-\lambda}}{\partial\lambda^2}}}\\
     &\geq-\frac{1}{E\brak{-\frac{y}{\lambda^2}}}\\
     &\geq\frac{\lambda^2}{E\brak{y}}\\
     &\geq \lambda \label{CramerRao}
