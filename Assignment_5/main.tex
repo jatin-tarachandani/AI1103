@@ -157,12 +157,13 @@ Var(Y)=\lambda
 \end{align}
 \end{lemma}
 
+We define $ p_{XY}\brak{x, y}$ as the joint discrete distribution of $X$ and $Y$.
 From Bayes Theorem,
 \begin{align}
-    \pr{X=x,Y=y}&=\pr{Y=y}  \pr{X=x|Y=y}\\
+    p_{XY}\brak{x, y}&=\pr{Y=y}  \pr{X=x|Y=y}\\
     &= \comb{y}{x} \frac{1}{2^y} \frac{\lambda^y}{y!} e^{- \lambda}
 \end{align}
-Let us represent $ \pr{X=x,Y=y}$ as the pmf of $x, y$, depending on $\lambda$: $p_{XY}\brak{x, y}$.
+
 
 \begin{definition} 
 If $T(X, Y)$ is an unbiased estimator of a parameter $\lambda$, the Cramer-Rao bound states that:
@@ -171,11 +172,21 @@ If $T(X, Y)$ is an unbiased estimator of a parameter $\lambda$, the Cramer-Rao b
 \end{align}
 \end{definition}
 
+\begin{lemma}\label{partial}
+\begin{align*}
+p_{XY}\brak{x, y}&= \comb{y}{x} \frac{1}{2^y} \frac{\lambda^y}{y!}e^{- \lambda}\\
+\frac{\partial^2 \ln(p_{XY}\brak{x, y})}{\partial\lambda^2}&=\frac{\partial^2\brak{ \splitfrac{\ln{\comb{y}{x}}-y\ln{2^y}}{+y\ln{\lambda}-\ln{y!}-\lambda}}}{\partial\lambda^2}\\
+&=\frac{\partial\brak{ \frac{y}{\lambda}-1}}{\partial\lambda}\\
+&=-\frac{y}{\lambda^2}
+\end{align*}
+\end{lemma}
 From using $\eqref{def CRB}$ on $T(X,Y)$,
 \begin{align}
-    Var(T(X, Y))&\geq -\frac{1}{E\brak{\frac{\partial^2 \ln(p_{XY}\brak{x, y}))}{\partial\lambda^2}}}\\
-    &\geq-\frac{1}{E\brak{\frac{\partial^2\brak{ \ln{\comb{y}{x}}-y\ln{2^y}+y\ln{\lambda}-\ln{y!}-\lambda}}{\partial\lambda^2}}}\\
-    &\geq-\frac{1}{E\brak{-\frac{y}{\lambda^2}}}\\
+    Var(T(X, Y))&\geq -\frac{1}{E\brak{\frac{\partial^2 \ln(p_{XY}\brak{x, y})}{\partial\lambda^2}}}\\
+\end{align}
+From \textit{Lemma} $\ref{partial}$,
+\begin{align}
+     Var(T(X, Y))&\geq-\frac{1}{E\brak{-\frac{y}{\lambda^2}}}\\
     &\geq\frac{\lambda^2}{E\brak{y}}\\
     &\geq \lambda \label{CramerRao}
 \end{align}
