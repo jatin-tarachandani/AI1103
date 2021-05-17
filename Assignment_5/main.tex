@@ -4,7 +4,7 @@
 \usepackage{gensymb}
 \singlespacing
 \usepackage[cmex10]{amsmath}
-\usepackage[margin=1.25in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -173,13 +173,19 @@ If $T(X, Y)$ is an unbiased estimator of a parameter $\lambda$, the Cramer-Rao b
 \end{definition}
 
 \begin{lemma}\label{partial}
-\begin{align*}
+\begin{equation}
+    \frac{\partial^2 \ln(p_{XY}\brak{x, y})}{\partial\lambda^2}=-\frac{y}{\lambda^2}
+\end{equation}
+\end{lemma}
+\begin{proof}
+\begin{align}
 p_{XY}\brak{x, y}&= \comb{y}{x} \frac{1}{2^y} \frac{\lambda^y}{y!}e^{- \lambda}\\
 \frac{\partial^2 \ln(p_{XY}\brak{x, y})}{\partial\lambda^2}&=\frac{\partial^2\brak{ \splitfrac{\ln{\comb{y}{x}}-y\ln{2^y}}{+y\ln{\lambda}-\ln{y!}-\lambda}}}{\partial\lambda^2}\\
 &=\frac{\partial\brak{ \frac{y}{\lambda}-1}}{\partial\lambda}\\
 &=-\frac{y}{\lambda^2}
-\end{align*}
-\end{lemma}
+\end{align}
+which is the required result.
+\end{proof}
 From using $\eqref{def CRB}$ on $T(X,Y)$,
 \begin{align}
     Var(T(X, Y))&\geq -\frac{1}{E\brak{\frac{\partial^2 \ln(p_{XY}\brak{x, y})}{\partial\lambda^2}}}\\
