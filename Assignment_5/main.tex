@@ -4,7 +4,7 @@
 \usepackage{gensymb}
 \singlespacing
 \usepackage[cmex10]{amsmath}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.25in]{geometry}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -142,6 +142,24 @@ Let $X$, $Y$, have the joint discrete distribution such that $X|Y=y \sim$ Binomi
 
 \section{Solution}
 \begin{definition}
+The pmf for a binomial distribution with parameters $n$ and $p$ is
+\begin{align}
+    \pr{X=x;n, p}=\frac{n!}{x!\brak{n-x}!}p^{x}\brak{1-p}^{n-x}
+\end{align}
+\end{definition}
+\begin{definition}
+The pmf for a Poisson distribution with parameter $\lambda$ is:
+\begin{align}
+    \pr{Y=y; \lambda}=\frac{\lambda^y}{y!} e^{-\lambda}
+\end{align}
+\end{definition}
+\begin{lemma}
+Since Y has a Poisson distribution, we know that:
+\begin{align}\label{Var=lam}
+Var(Y)=\lambda
+\end{align}
+\end{lemma}
+\begin{definition}
 Suppose we have an estimator $T(X, Y)$, acting on a set of 2 RVs $X, Y$; which estimates a parameter $\theta$, then if
 \begin{equation}
     E\brak{T(X, Y)}=\theta
@@ -150,12 +168,7 @@ Suppose we have an estimator $T(X, Y)$, acting on a set of 2 RVs $X, Y$; which e
 the estimator is unbiased. 
 \end{definition}
 
-\begin{lemma}
-Since Y has a Poisson distribution, we know that:
-\begin{align}\label{Var=lam}
-Var(Y)=\lambda
-\end{align}
-\end{lemma}
+
 
 We define $ p_{XY}\brak{x, y}$ as the joint discrete distribution of $X$ and $Y$.
 From Bayes Theorem,
